@@ -353,12 +353,12 @@ class AiContentApp:
         if voices:
             items.append(f"voice1 — {voices[0].name}")
             if len(voices) > 2:
-                items.append(f"voice2 — {voices[2].name}")
+                items.append(f"voice2 — {voices[1].name}")
             items.append("────────")
             for v in voices:
                 items.append(f"{(v.name or 'Voice')} — {v.id}")
         else:
-            items = ["voice1 (engine[0])", "voice2 (engine[2])"]
+            items = ["voice1 (engine[0])", "voice2 (engine[1])"]
 
         self.voice_combo["values"] = items
 
@@ -380,8 +380,8 @@ class AiContentApp:
             self.tts.enqueue({'op': 'set_by_index', 'index': 0})
             return
         if sel_text.startswith("voice2"):
-            self.status_var.set("Selected voice2 → engine[2]")
-            self.tts.enqueue({'op': 'set_by_index', 'index': 2})
+            self.status_var.set("Selected voice2 → engine[1]")
+            self.tts.enqueue({'op': 'set_by_index', 'index': 1})
             return
 
         try:
